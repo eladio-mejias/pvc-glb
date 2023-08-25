@@ -5,6 +5,7 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs>
+      <a-asset-item id="glb-asset" src="https://eladio-mejias.github.io/pvc-glb/papel_rosal_420_v2.glb"></a-asset-item>
       <a-marker preset="hiro">
         <!-- we use cors proxy to avoid cross-origin problems -->
         <!--
@@ -16,7 +17,7 @@
         <a-entity
           position="0 0 0"
           scale="0.05 0.05 0.05"
-          gltf-model="https://raw.githack.com/eladio-mejias/pvc-glb/main/papel_rosal_420_v2.glb"
+          gltf-model="#glb-asset"
         ></a-entity>
       </a-marker>
       <a-entity camera></a-entity>
