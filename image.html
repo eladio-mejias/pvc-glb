@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <title>Rosal 420 Hojas - Marker</title>
+    <title>Rosal 420 Hojas - Image Tracking</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="styles.css">
@@ -9,7 +9,31 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="gesture-detector.js"></script>
     <script src="gesture-handler.js"></script>
+    <!-- style for the loader -->
+<style>
+    .arjs-loader {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .arjs-loader div {
+      text-align: center;
+      font-size: 1.25em;
+      color: white;
+    }
+  </style>
   <body style="margin : 0px; overflow: hidden;">
+    <div class="arjs-loader">
+        <div>Loading, please wait...</div>
+      </div>
     <a-scene
       arjs
       embedded
@@ -25,9 +49,13 @@
       </a-asset-item>
     </a-assets>
   <!--   <a-marker preset="hiro"> -->
-    <a-marker 
-      type="pattern" 
-      url="https://eladio-mejias.github.io/pvc-glb/pvc.patt"
+    <a-nft 
+      type="nft" 
+      url="./Rosal.iset"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
       raycaster="objects: .clickable"
       emitevents="true"
       cursor="fuse: false; rayOrigin: mouse;"
@@ -47,7 +75,7 @@
           class="clickable"
           gesture-handler>
         </a-entity>
-      </a-marker>
+      </a-nftt>
       <a-entity camera></a-entity>
     </a-scene>
   </body>
