@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <title>Rosal 420 Hojas</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="gesture-detector.js"></script>
+    <script src="gesture-handler.js"></script>
   <body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-asset-item id="glb-asset" src="https://eladio-mejias.github.io/pvc-glb/papel_rosal_420_v2.glb"></a-asset-item>
+    <a-scene
+      arjs
+      embedded
+      renderer="logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
+      gesture-detector
+      id="scene"
+    >
+    <a-assets>
+      <a-asset-item 
+      id="glb-asset" 
+      src="https://eladio-mejias.github.io/pvc-glb/papel_rosal_420_v2.glb">
+      </a-asset-item>
+    </a-assets>
   <!--   <a-marker preset="hiro"> -->
-    <a-marker type="pattern" url="https://eladio-mejias.github.io/pvc-glb/pvc.patt"> 
+    <a-marker 
+      type="pattern" 
+      url="https://eladio-mejias.github.io/pvc-glb/pvc.patt"
+      raycaster="objects: .clickable"
+      emitevents="true"
+      cursor="fuse: false; rayOrigin: mouse;"
+      id="markerA"> 
         <!-- we use cors proxy to avoid cross-origin problems -->
         <!--
           ⚠️⚠️⚠️
@@ -19,7 +43,10 @@
           position="0 0 0"
           scale="5 5 5"
           gltf-model="#glb-asset"
-        ></a-entity>
+          id="rosal-model"
+          class="clickable"
+          gesture-handler>
+        </a-entity>
       </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
